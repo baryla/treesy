@@ -6,6 +6,22 @@ The API is designed with ease of use in mind, hence the name Treesy (Tree + Easy
 
 I created it for a side project I'm working on because I couldn't find a library that has a simple API and is "just" for creating tree structures. Oh and it doesn't have any dependencies :)
 
+## Installation
+
+```
+yarn add treesy
+```
+
+```
+npm install treesy
+```
+
+Or through a CDN
+
+```html
+<script src="https://unpkg.com/treesy"></script>
+```
+
 ## Usage
 
 #### Basic usage
