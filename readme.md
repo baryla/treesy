@@ -1,8 +1,8 @@
-# Treesy - API for creating tree structures
+# Treesy - An API for creating and manipulating tree-node structures
 
-This library is meant to be used for creating tree structures.
+This library is meant to be used for creating and manipulating tree-node structures.
 
-The API is designed with ease of use in mind, hence the name Treesy (Tree + Easy - get it? 😂).
+The API is designed with ease of use in mind, hence the name Treesy (Tree + Easy - get it? 😂 - I'm sorry).
 
 I created it for a side project I'm working on because I couldn't find a library that has a simple API and is "just" for creating tree structures. Oh and it doesn't have any dependencies :)
 
