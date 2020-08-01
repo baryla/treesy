@@ -8,7 +8,7 @@ I created it for a side project I'm working on because I couldn't find a library
 
 ## Usage
 
-### Basic usage
+#### Basic usage
 
 ```ts
 import { Tree } from "treesy";
@@ -33,7 +33,7 @@ console.log(tree.toJson());
 ]
 ```
 
-### Change the ID
+#### Change the ID
 
 ```ts
 tree.add("MY_UNIQUE_ID", { name: "bob" });
