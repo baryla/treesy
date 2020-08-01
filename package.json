@@ -1,7 +1,15 @@
 {
   "name": "treesy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An API for creating tree-node structures",
+  "keywords": [
+    "tree",
+    "node",
+    "api",
+    "structure",
+    "data",
+    "json"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "unpkg": "dist/index.iife.js",
