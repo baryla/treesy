@@ -1,6 +1,6 @@
 {
   "name": "treesy",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "An API for creating and manipulating tree-node structures",
   "keywords": [
     "tree",
