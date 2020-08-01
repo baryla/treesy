@@ -16,8 +16,17 @@
     "build": "rollup -c rollup.config.ts",
     "build-prod": "NODE_ENV=production yarn build",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prepublish": "yarn format && yarn lint && yarn build-prod",
+    "publish": "npm publish"
   },
+  "files": [
+    "dist/index.js",
+    "dist/index.es.js",
+    "dist/index.iife.js",
+    "dist/types.d.ts",
+    "readme.md"
+  ],
   "bugs": {
     "url": "https://github.com/baryla/treesy/issues"
   },
