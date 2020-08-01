@@ -167,6 +167,5 @@ Generates a JSON representation of the node and it's children.
 
 ## TODO
 
-[] Allow creating a tree with default data
-
-[] Write tests and have 100% coverage
+- [ ] Allow creating a tree with default data
+- [ ] Write tests and have 100% coverage
