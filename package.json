@@ -16,7 +16,7 @@
     "build": "rollup -c rollup.config.ts",
     "build-prod": "NODE_ENV=production yarn build",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "prepublish": "yarn format && yarn lint && yarn build-prod",
     "publish": "npm publish"
   },
