@@ -23,6 +23,7 @@
     "dev": "rollup -w -c rollup.config.ts",
     "build": "rollup -c rollup.config.ts",
     "build-prod": "NODE_ENV=production yarn build",
+    "test": "jest --detectOpenHandles --testTimeout=10000 --forceExit --coverage --passWithNoTests",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "prepublish": "yarn format && yarn lint && yarn build-prod",
@@ -43,14 +44,17 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
+    "@types/jest": "^26.0.8",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "eslint": "^7.6.0",
+    "jest": "^26.2.2",
     "prettier": "^2.0.5",
     "rollup": "^2.23.0",
     "rollup-plugin-dts": "^1.4.9",
     "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   }
 }

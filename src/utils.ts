@@ -41,7 +41,7 @@ function findOnNode(criteria: SearchCriteria) {
   };
 }
 
-// @credits: https://github.com/studio-b12/is-subset
+// @credits: https://github.com/studio-b12/is-subset // slightly modified
 function isSubset(superset: unknown, subset: unknown) {
   if (
     typeof superset !== "object" ||
@@ -51,10 +51,8 @@ function isSubset(superset: unknown, subset: unknown) {
   )
     return false;
 
-  if (superset instanceof Date || subset instanceof Date)
-    return superset.valueOf() === subset.valueOf();
-
   return Object.keys(subset).every((key) => {
+    // istanbul ignore if
     // eslint-disable-next-line no-prototype-builtins
     if (!superset.propertyIsEnumerable(key)) return false;
 
@@ -78,29 +76,16 @@ export function normalizeData(
   let id: string | undefined;
   let nodeData: AddData;
 
-  function validateAddData(data: AddData) {
-    if (!data) {
-      return;
-    }
-
-    if (data.children) {
-      throw new Error(`'children' field isn't allowed to be set.`);
-    }
-  }
-
   if (typeof idOrData === "string") {
-    validateAddData(data);
-    delete data.id;
+    delete data?.id;
 
     id = idOrData;
     nodeData = data;
   } else {
-    validateAddData(idOrData);
-
-    id = idOrData?.id || data?.id || uuid();
+    id = idOrData?.id || data?.id;
 
     if (typeof id !== "string") {
-      throw new Error("A Node ID needs to be a string.");
+      id = uuid();
     }
 
     if (idOrData && typeof idOrData === "object") {
@@ -128,7 +113,7 @@ export function find(
       return node;
     }
 
-    const deep = options?.deep || false;
+    const deep = options?.deep ?? true;
 
     if (!deep) {
       return node.children.find(findOnNode(criteria));
@@ -152,4 +137,23 @@ export function find(
   }
 
   return undefined;
+}
+
+export function isNode(data: unknown): boolean {
+  if (typeof data === "object") {
+    return (
+      data["id"] &&
+      typeof data["id"] === "string" &&
+      data["data"] &&
+      typeof data["data"] === "object"
+    );
+  }
+
+  return false;
+}
+
+export function assert(value: unknown, message: string): void {
+  if (!value) {
+    throw new Error(message);
+  }
 }

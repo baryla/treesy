@@ -1,5 +1,5 @@
 import { Node } from "./Node";
-import { find } from "./utils";
+import { find, isNode } from "./utils";
 import {
   INode,
   Data,
@@ -17,10 +17,20 @@ export class Tree implements INode {
     // this.generateTree(initialNodes);
   }
 
-  public add(id: string, data: Data): Node;
-  public add(data: AddData): Node;
-  public add(idOrData: string | AddData, data?: Data): Node {
-    const node = new Node(idOrData, null, data, this);
+  public add(id: string, data?: Data): Node;
+  public add(dataOrNode: AddData | Node): Node;
+  public add(idOrDataOrNode: string | AddData | Node, data?: Data): Node {
+    let node: Node;
+
+    if (isNode(idOrDataOrNode)) {
+      node = idOrDataOrNode as Node;
+    } else {
+      const idOrData = idOrDataOrNode as string | AddData;
+      node = new Node(idOrData, data);
+    }
+
+    node.tree = this;
+    node.parentId = null;
 
     this._tree.push(node);
 
@@ -39,6 +49,7 @@ export class Tree implements INode {
     return this._tree.map((node) => node.toJson());
   }
 
+  // istanbul ignore next
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private generateTree(initialNodes?: Tree | unknown) {
     // we can use this to clone a tree ot create an entirely new one

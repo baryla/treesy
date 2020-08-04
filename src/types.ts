@@ -2,8 +2,8 @@ import { Tree } from "./Tree";
 import { Node } from "./Node";
 
 export interface INode {
-  add(id: string, options: AddData): Node;
-  add(options: AddData): Node;
+  add(id: string, data: AddData): Node;
+  add(dataOrNode: AddData | Node): Node;
   find(searchCriteria: SearchCriteria): Node | undefined;
   toJson();
 }
