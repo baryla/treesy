@@ -80,7 +80,7 @@ console.log(tree.toJSON());
 
 Creates the tree.
 
-#### \_tree: Array<Node>
+#### \_tree: Array\<Node>
 
 The internal tree itself but exposed.
 
@@ -118,7 +118,7 @@ If `deep` is set to tree, the finder will do a recursive search. If it's false, 
 
 `Node` - Used to set the "from" point on the search. If a node is passed, it'll start the search from there and search its children only.
 
-#### toJson | (): JsonNode[]
+#### toJson | (): Array\<JsonNode>
 
 Generates a JSON representation of the tree.
 
@@ -140,7 +140,7 @@ Return the parent ID of the node. Can be null if it's a root node or if it's not
 
 Data object of the node. Can be used to store anything such as state.
 
-#### children: Array<Node>
+#### children: Array\<Node>
 
 Node's children.
 
@@ -189,7 +189,7 @@ const rootNode = tree.add({ greeting: "hello" });
 rootNode.remove();
 ```
 
-#### toJson | (): JsonNode[]
+#### toJson | (): Array\<JsonNode>
 
 Generates a JSON representation of the node and it's children.
 
