@@ -51,6 +51,7 @@ export class Node implements INode {
 
     if (isNode(idOrDataOrNode)) {
       node = idOrDataOrNode as Node;
+      node.data = data || node.data;
     } else {
       const idOrData = idOrDataOrNode as string | AddData;
       node = new Node(idOrData, data);
