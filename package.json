@@ -26,7 +26,7 @@
     "test": "jest --detectOpenHandles --testTimeout=10000 --forceExit --coverage --passWithNoTests",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
-    "prepublish": "yarn format && yarn lint && yarn build-prod",
+    "prepublish": "yarn format && yarn lint && yarn test && yarn build-prod",
     "npm:publish": "npm publish"
   },
   "files": [
