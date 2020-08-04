@@ -15,7 +15,7 @@ export class Node implements INode {
   public parentId: string | null = null; // null = root.
   public data: Record<string, unknown>;
   public children: Array<Node> = [];
-  public _tree: Tree | undefined;
+  private _tree: Tree | undefined;
 
   constructor(
     idOrData: AddData | string | null,

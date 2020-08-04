@@ -76,7 +76,15 @@ console.log(tree.toJSON());
 
 ### Tree
 
-#### add | (idOrData: string | AddData, data?: Data): Node
+#### constructor
+
+Creates the tree.
+
+#### \_tree: Array<Node>
+
+The internal tree itself but exposed.
+
+#### add | (idOrData: string | AddData | Node, data?: Data): Node
 
 This is used to add a root node.
 
@@ -93,11 +101,9 @@ Used to search the whole tree for a given node based on the search criteria.
 The callback can be used like this:
 
 ```ts
-const node = tree.find((node) => {
-  if (node.data.count === 2) {
-    return true;
-  }
-});
+const node = tree.find(
+  node => node.data.count === 2)
+);
 ```
 
 `SearchOptions` - possible options include:
@@ -108,7 +114,7 @@ export type SearchOptions = {
 };
 ```
 
-If `deep` is set to tree, the finder will do a recursive search. If it's false, it'll only look at the direct children of the tree (root nodes).
+If `deep` is set to tree, the finder will do a recursive search. If it's false, it'll only look at the direct children of the tree (root nodes). The default value is **true**
 
 `Node` - Used to set the "from" point on the search. If a node is passed, it'll start the search from there and search its children only.
 
@@ -117,6 +123,10 @@ If `deep` is set to tree, the finder will do a recursive search. If it's false, 
 Generates a JSON representation of the tree.
 
 ### Node
+
+#### constructor | (idOrData: AddData | string | null, data?: Record<string, unknown>)
+
+Creates the new node.
 
 #### id: string
 
@@ -142,7 +152,7 @@ The tree itself. This can be a quick way to access the methods on the tree objec
 
 Return the direct parent of a given Node.
 
-#### add | (idOrData: string | AddData, data?: Data): Node
+#### add | (idOrData: string | AddData | Node, data?: Data): Node
 
 Same as the `add` method on the [Tree](#tree) but this time, you are adding a new node as a child of the current node.
 
@@ -169,7 +179,7 @@ const childNode = rootNode.add({ greeting: "hi" });
 childNode.move("root");
 ```
 
-#### remove | (): void
+#### delete | (): void
 
 Can be used to remove the node completely.
 
@@ -186,4 +196,3 @@ Generates a JSON representation of the node and it's children.
 ## TODO
 
 - [ ] Allow creating a tree with default data
-- [ ] Write tests and have 100% coverage
