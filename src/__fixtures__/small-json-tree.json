@@ -1,0 +1,120 @@
+[
+  {
+    "id": "1",
+    "parentId": null,
+    "data": {
+      "greeting": "hello 1"
+    },
+    "children": [
+      {
+        "id": "11",
+        "parentId": "1",
+        "data": {
+          "greeting": "hello 11"
+        },
+        "children": []
+      },
+      {
+        "id": "12",
+        "parentId": "1",
+        "data": {
+          "greeting": "hello 12"
+        },
+        "children": [
+          {
+            "id": "121",
+            "parentId": "12",
+            "data": {
+              "greeting": "hello 121"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "parentId": null,
+    "data": {
+      "greeting": "hello 2"
+    },
+    "children": []
+  },
+  {
+    "id": "3",
+    "parentId": null,
+    "data": {
+      "greeting": "hello 3"
+    },
+    "children": [
+      {
+        "id": "31",
+        "parentId": "3",
+        "data": {
+          "greeting": "hello 31"
+        },
+        "children": [
+          {
+            "id": "311",
+            "parentId": "31",
+            "data": {
+              "greeting": "hello 311"
+            },
+            "children": [
+              {
+                "id": "3111",
+                "parentId": "311",
+                "data": {
+                  "greeting": "hello 3111"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "parentId": null,
+    "data": {
+      "greeting": "hello 4"
+    },
+    "children": [
+      {
+        "id": "41",
+        "parentId": "4",
+        "data": {
+          "greeting": "hello 41"
+        },
+        "children": []
+      },
+      {
+        "id": "42",
+        "parentId": "4",
+        "data": {
+          "greeting": "hello 42"
+        },
+        "children": []
+      },
+      {
+        "id": "43",
+        "parentId": "4",
+        "data": {
+          "greeting": "hello 43"
+        },
+        "children": []
+      },
+      {
+        "id": "44",
+        "parentId": "4",
+        "data": {
+          "greeting": "hello 44"
+        },
+        "children": []
+      }
+    ]
+  }
+]

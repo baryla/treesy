@@ -6,6 +6,7 @@ import {
   SearchCriteria,
   SearchOptions,
   NormalizedData,
+  JsonNode,
 } from "./types";
 
 // not a proper uuid but good enough
@@ -156,4 +157,75 @@ export function assert(value: unknown, message: string): void {
   if (!value) {
     throw new Error(message);
   }
+}
+
+function isObject(data: unknown) {
+  return typeof data === "object" && data != null;
+}
+
+export function generateTreeFromJson(
+  jsonTree: Array<JsonNode>,
+  tree: Tree
+): Tree {
+  function traverseJson(jsonTree: Array<JsonNode>): Tree {
+    for (const topNode of jsonTree) {
+      if (isObject(topNode)) {
+        tree.add(generateNode(topNode));
+      }
+    }
+
+    return tree;
+  }
+
+  function generateId(jsonNode: JsonNode): string {
+    if (typeof jsonNode.id === "string" && jsonNode.id) {
+      return jsonNode.id;
+    }
+
+    return uuid();
+  }
+
+  function generateData(jsonNode: JsonNode): Record<string, unknown> {
+    if (isObject(jsonNode.data)) {
+      return jsonNode.data || {};
+    }
+
+    return {};
+  }
+
+  function generateNode(jsonNode: JsonNode): Node {
+    const id = generateId(jsonNode);
+    const data = generateData(jsonNode);
+
+    const parentNode = new Node(id, data);
+
+    function addChildrenRecursively(children: Array<JsonNode>, parent: Node) {
+      for (const child of children) {
+        if (isObject(child)) {
+          const childId = generateId(child);
+          const childData = generateData(child);
+
+          const childNode = new Node(childId, childData);
+
+          parent.add(childNode);
+
+          if (Array.isArray(child.children)) {
+            addChildrenRecursively(child.children, childNode);
+          }
+        }
+      }
+    }
+
+    if (Array.isArray(jsonNode.children)) {
+      addChildrenRecursively(jsonNode.children, parentNode);
+    }
+
+    return parentNode;
+  }
+
+  if (!Array.isArray(jsonTree)) {
+    throw new Error("Initial tree has to be an array.");
+  }
+
+  return traverseJson(jsonTree);
 }

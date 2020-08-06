@@ -1,5 +1,9 @@
 import { Node } from "../Node";
 import { Tree } from "../Tree";
+import { JsonNode } from "../types";
+
+import smallJsonTree from "../__fixtures__/small-json-tree.json";
+import largeJsonTree from "../__fixtures__/large-json-tree.json";
 
 it("should initialise a new tree", () => {
   expect(new Tree()._tree).toEqual([]);
@@ -36,4 +40,20 @@ it("should be able to add an instantiated node", () => {
 
   expect(tree._tree.length).toBe(1);
   expect(tree.toJson()[0].id).toBe(id);
+});
+
+it("should generate a tree from a small json array", () => {
+  const tree = new Tree(smallJsonTree as Array<JsonNode>);
+
+  expect(tree.toJson()).toEqual(smallJsonTree);
+});
+
+it("should generate a tree from a large json array", () => {
+  const tree = new Tree(largeJsonTree as Array<JsonNode>);
+
+  expect(tree.toJson()).toEqual(largeJsonTree);
+});
+
+it("should throw when generating tree if it's not an array", () => {
+  expect(() => new Tree({} as any)).toThrow();
 });

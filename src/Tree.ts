@@ -1,5 +1,5 @@
 import { Node } from "./Node";
-import { find, isNode } from "./utils";
+import { find, isNode, generateTreeFromJson } from "./utils";
 import {
   INode,
   Data,
@@ -12,9 +12,10 @@ import {
 export class Tree implements INode {
   public _tree: Array<Node> = [];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  constructor(initialNodes?: Tree | unknown) {
-    // this.generateTree(initialNodes);
+  constructor(jsonTree?: Array<JsonNode>) {
+    if (jsonTree) {
+      generateTreeFromJson(jsonTree, this);
+    }
   }
 
   public add(id: string, data?: Data): Node;
@@ -48,14 +49,6 @@ export class Tree implements INode {
 
   public toJson(): Array<JsonNode> {
     return this._tree.map((node) => node.toJson());
-  }
-
-  // istanbul ignore next
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private generateTree(initialNodes?: Tree | unknown) {
-    // we can use this to clone a tree ot create an entirely new one
-
-    throw new Error("Not yet supported.");
   }
 }
 
