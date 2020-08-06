@@ -80,6 +80,23 @@ console.log(tree.toJSON());
 
 Creates the tree.
 
+You can pass an array of `JsonNode`'s to create a tree with default data. It can be done like this:
+
+```ts
+const jsonTree = [
+  {
+    id: "MY_ID",
+    data: {
+      greeting: "Hello",
+    },
+    children: [],
+  },
+];
+
+const tree = new Tree(jsonTree);
+console.log(tree.toJson()[0].id); // MY_ID
+```
+
 #### \_tree: Array\<Node>
 
 The internal tree itself but exposed.
@@ -192,7 +209,3 @@ rootNode.remove();
 #### toJson | (): Array\<JsonNode>
 
 Generates a JSON representation of the node and it's children.
-
-## TODO
-
-- [ ] Allow creating a tree with default data
