@@ -68,7 +68,25 @@
                 "data": {
                   "greeting": "hello 3111"
                 },
-                "children": []
+                "children": [
+                  {
+                    "id": "31111",
+                    "parentId": "3111",
+                    "data": {
+                      "greeting": "hello 31111"
+                    },
+                    "children": [
+                      {
+                        "id": "311111",
+                        "parentId": "31111",
+                        "data": {
+                          "greeting": "hello 311111"
+                        },
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }

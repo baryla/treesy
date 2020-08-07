@@ -57,3 +57,10 @@ it("should generate a tree from a large json array", () => {
 it("should throw when generating tree if it's not an array", () => {
   expect(() => new Tree({} as any)).toThrow();
 });
+
+it("should find a nested node on a tree", () => {
+  const tree = new Tree(smallJsonTree as Array<JsonNode>);
+  const id = "311111";
+
+  expect(tree.find(id).id).toBe(id);
+});

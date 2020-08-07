@@ -109,35 +109,27 @@ export function find(
   options?: SearchOptions,
   node?: Node
 ): Node | undefined {
-  if (node) {
-    if (findOnNode(criteria)(node)) {
-      return node;
-    }
+  const deep = options?.deep ?? true;
 
-    const deep = options?.deep ?? true;
+  function internalFind(nodes: Array<Node>) {
+    if (!nodes.length) {
+      return undefined;
+    }
 
     if (!deep) {
-      return node.children.find(findOnNode(criteria));
+      return nodes.find(findOnNode(criteria));
     }
 
-    return node.children.reduce((acc, curr) => {
-      if (!findOnNode(criteria)(curr)) {
-        return find(criteria, tree, options, curr);
+    return nodes.reduce((acc, curr) => {
+      if (findOnNode(criteria)(curr)) {
+        return curr;
       }
 
-      return curr;
+      return internalFind(curr.children) || acc;
     }, undefined);
   }
 
-  for (const rootNode of tree._tree) {
-    const foundNode = find(criteria, tree, options, rootNode);
-
-    if (foundNode) {
-      return foundNode;
-    }
-  }
-
-  return undefined;
+  return internalFind(tree._tree);
 }
 
 export function isNode(data: unknown): boolean {
