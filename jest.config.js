@@ -8,6 +8,6 @@ module.exports = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },
-  testPathIgnorePatterns: ["/node_modules", "/src/*/__tests__/utils"],
+  testPathIgnorePatterns: ["/node_modules", "/src/*/__tests__/utils.ts"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 };

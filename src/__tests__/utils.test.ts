@@ -31,4 +31,20 @@ describe("generateTreeFromJson", () => {
 
     expect(tree.toJson()[1].id).toBe("cool id");
   });
+
+  it("should be able to get a parent of a child node", () => {
+    const jsonData = ([
+      {
+        id: "1",
+        data: "",
+        children: [{ id: "11" }],
+      },
+    ] as any) as Array<JsonNode>;
+
+    const tree = new Tree(jsonData);
+    const parent = tree.find("1");
+    const child = tree.find("11");
+
+    expect(child.parent).toBe(parent);
+  });
 });

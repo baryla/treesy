@@ -198,6 +198,7 @@ export function generateTreeFromJson(
     const data = generateData(jsonNode);
 
     const parentNode = new Node(id, data);
+    parentNode.tree = tree;
 
     function addChildrenRecursively(children: Array<JsonNode>, parent: Node) {
       for (const child of children) {
@@ -206,6 +207,7 @@ export function generateTreeFromJson(
           const childData = generateData(child);
 
           const childNode = new Node(childId, childData);
+          childNode.tree = tree;
 
           parent.add(childNode);
 
