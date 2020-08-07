@@ -62,6 +62,20 @@ it("should find a new node based on the given criteria", () => {
   expect(parentNode.find(grandChildId, { deep: false })).toBeUndefined();
 });
 
+it("should not find a node that isn't a direct child", () => {
+  const tree = new Tree();
+  const parentId = "__PARENT_ID__";
+  const childId = "__CHILD_ID__";
+  const grandChildId = "__GRAND_CHILD_ID__";
+
+  const parentNode = tree.add(parentId, {});
+  const childNode = parentNode.add(childId);
+  const grandChildNode = childNode.add(grandChildId);
+
+  expect(childNode.find(parentId)).toBeUndefined();
+  expect(childNode.find(grandChildId)).toEqual(grandChildNode);
+});
+
 it("should update the node", () => {
   const tree = new Tree();
   const nodeId = "__ID__";

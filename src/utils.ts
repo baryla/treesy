@@ -129,7 +129,7 @@ export function find(
     }, undefined);
   }
 
-  return internalFind(tree._tree);
+  return internalFind(node ? node.children : tree._tree);
 }
 
 export function isNode(data: unknown): boolean {
