@@ -23,16 +23,16 @@ export type SearchOptions = {
   deep?: boolean;
 };
 
-export type JsonNode = {
+export type JsonNode<Data = Record<string, unknown>> = {
   id: string;
   parentId: string | null;
-  data: Record<string, unknown>;
-  children: Array<JsonNode>;
+  data: Data;
+  children: Array<JsonNode<Data>>;
 };
 
-export type NormalizedData = {
+export type NormalizedData<Data = Record<string, unknown>> = {
   id: string;
-  data: Record<string, unknown>;
+  data: Data;
 };
 
 export { Node, Tree };
