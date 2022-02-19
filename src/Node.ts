@@ -2,7 +2,6 @@ import { Tree } from "./Tree";
 import { normalizeData, isNode, assert } from "./utils";
 
 import {
-  INode,
   AddData,
   Data,
   SearchCriteria,
@@ -10,21 +9,20 @@ import {
   JsonNode,
 } from "./types";
 
-export class Node implements INode {
+export class Node<
+  NodeData extends Record<string, unknown> = Record<string, unknown>
+> {
   public id: string;
   public parentId: string | null = null; // null = root.
-  public data: Record<string, unknown>;
+  public data: NodeData;
   public children: Array<Node> = [];
   private _tree: Tree | undefined;
 
-  constructor(
-    idOrData: AddData | string | null,
-    data?: Record<string, unknown>
-  ) {
+  constructor(idOrData: AddData<NodeData> | string | null, data?: NodeData) {
     const { id: nodeId, data: nodeData } = normalizeData(idOrData, data);
 
     this.id = nodeId;
-    this.data = nodeData || {};
+    this.data = (nodeData as NodeData) || ({} as NodeData);
     this.parentId = null;
   }
 
@@ -75,7 +73,7 @@ export class Node implements INode {
   }
 
   public update(dataToUpdate: Record<string, unknown>): Node {
-    this.data = dataToUpdate;
+    this.data = dataToUpdate as NodeData;
 
     return this;
   }

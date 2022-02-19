@@ -1,7 +1,6 @@
 import { Node } from "./Node";
 import { find, isNode, generateTreeFromJson } from "./utils";
 import {
-  INode,
   Data,
   AddData,
   SearchCriteria,
@@ -9,7 +8,7 @@ import {
   JsonNode,
 } from "./types";
 
-export class Tree implements INode {
+export class Tree {
   public _tree: Array<Node> = [];
 
   constructor(jsonTree?: Array<JsonNode>) {

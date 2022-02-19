@@ -1,16 +1,9 @@
 import { Tree } from "./Tree";
 import { Node } from "./Node";
 
-export interface INode {
-  add(id: string, data: AddData): Node;
-  add(dataOrNode: AddData | Node): Node;
-  find(searchCriteria: SearchCriteria): Node | undefined;
-  toJson();
-}
-
-export type AddData = {
+export type AddData<NodeData = Data> = {
   id?: string;
-} & Data;
+} & NodeData;
 
 export type Data = Record<string, unknown>;
 

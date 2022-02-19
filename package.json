@@ -1,6 +1,6 @@
 {
   "name": "treesy",
-  "version": "0.2.31",
+  "version": "0.2.32",
   "description": "An API for creating and manipulating tree-node structures",
   "keywords": [
     "tree",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
-    "@types/jest": "^26.0.8",
+    "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
     "conventional-changelog-cli": "^2.0.34",
