@@ -1,7 +1,7 @@
 import { Tree } from "./Tree";
 import { Node } from "./Node";
 
-export type AddData<NodeData = Data> = {
+export type AddData<NodeData = unknown> = {
   id?: string;
 } & NodeData;
 
@@ -16,14 +16,14 @@ export type SearchOptions = {
   deep?: boolean;
 };
 
-export type JsonNode<Data = Record<string, unknown>> = {
+export type JsonNode<Data = unknown> = {
   id: string;
   parentId: string | null;
   data: Data;
   children: Array<JsonNode<Data>>;
 };
 
-export type NormalizedData<Data = Record<string, unknown>> = {
+export type NormalizedData<Data = unknown> = {
   id: string;
   data: Data;
 };

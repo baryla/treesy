@@ -177,12 +177,12 @@ export function generateTreeFromJson(
     return uuid();
   }
 
-  function generateData(jsonNode: JsonNode): Record<string, unknown> {
+  function generateData<Data = unknown>(jsonNode: JsonNode<Data>): Data {
     if (isObject(jsonNode.data)) {
-      return jsonNode.data || {};
+      return jsonNode.data || ({} as Data);
     }
 
-    return {};
+    return {} as Data;
   }
 
   function generateNode(jsonNode: JsonNode): Node {

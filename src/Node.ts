@@ -9,9 +9,7 @@ import {
   JsonNode,
 } from "./types";
 
-export class Node<
-  NodeData extends Record<string, unknown> = Record<string, unknown>
-> {
+export class Node<NodeData = unknown> {
   public id: string;
   public parentId: string | null = null; // null = root.
   public data: NodeData;
